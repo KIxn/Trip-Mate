@@ -130,15 +130,11 @@ section {
 
 .card h2,
 h3 {
-    margin: 1em;
+    width: fit-content;
 }
 
-.card h2 {
-    font-size: 4rem;
-}
-
-.card h3 {
-    font-size: 2rem;
+#temp {
+    width: auto;
 }
 
 .card {

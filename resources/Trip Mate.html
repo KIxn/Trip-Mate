@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Mate</title>
+    
+    
+    
+    
+    
+    
+<link rel="icon" href="http://127.0.0.1:5500/resources/opt.png" type="image/png"><link rel="preconnect" href="https://fonts.gstatic.com/"><link href="Trip%20Mate_files/css2.css" rel="stylesheet"><link rel="stylesheet" href="Trip%20Mate_files/reset.css" type="text/css"><link rel="stylesheet" href="Trip%20Mate_files/styles.css" type="text/css"><link rel="stylesheet" href="Trip%20Mate_files/all.css" type="text/css"></head>
+
+<body>
+    <nav><i class="fas fa-2x fa-passport"> <span> Trip Mate</span></i></nav>
+    <header>
+        <div>
+            <h1>Trip Mate: Weather &amp; Attraction Advisor</h1>
+            <br>
+            <h2>Heading to a particlar City/State, and you need to know what the main attractons are?</h2>
+            <br>
+            <p>-Just type in the area youre headed to in the Search Bar below and we'll tell you everything you need to know...</p>
+        </div>
+    </header>
+    <main>
+        <section id="search-area">
+            <table id="search-box">
+                <tbody><tr>
+                    <td><input type="text" id="search-query" placeholder="Enter Area name Eg.)Chicago, IL" value="Durban"></td>
+                    <td><i id="btn" class="fas fa-2x fa-search-location"></i></td>
+                </tr>
+            </tbody></table>
+        </section>
+        <div id="info">
+            <section>
+                <h2 style="width: 100%;">Weather Report</h2>
+                <div id="wcard" class="card">
+                    <h2 id="temp">22°C</h2>
+                    <h3 id="feels-like">Humidity: 61%</h3>
+                    <h3 id="humidity">Real-Feel: 22°C</h3>
+                </div>
+            </section>
+            <br>
+            <section>
+                <h2 style="width: 100%;">Recommended Places</h2>
+                <div id="vcard0" class="card"></div>
+                <div id="vcard1" class="card"></div>
+                <div id="vcard2" class="card"></div>
+            </section>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="Trip%20Mate_files/index.js">
+    </script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
