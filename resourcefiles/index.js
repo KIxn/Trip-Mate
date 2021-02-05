@@ -15,10 +15,7 @@ let lng = '';
 //input components
 let btn = document.getElementById('btn');
 let inp = document.getElementById('search-query');
-
-//response holders
-let foursqobj = '';
-let weathobj = '';
+let info_section = document.getElementById('info');
 
 async function helper(resp) {
     lat = resp.response.geocode.center.lat;
@@ -36,11 +33,60 @@ async function helper(resp) {
     }
 }
 
+//structures to old refined data
+finalwobj = {};
+finalfarr = [];
+
+//to edit the html
+function EditHtml() {
+    document.getElementById('temp').innerHTML = finalwobj.Temp;
+    document.getElementById('feels-like').innerHTML = `Real-Feel: ${finalwobj.Feels}`;
+    document.getElementById('humidity').innerHTML = `Humidity: ${finalwobj.Humid}`;
+
+    document.getElementById('nm0').innerHTML = finalfarr[0].Name;
+    document.getElementById('cat0').innerHTML = `Description: ${finalfarr[0].Desc}`;
+    document.getElementById('add0').innerHTML = `Address: ${finalfarr[0].Add}`;
+
+    document.getElementById('nm1').innerHTML = finalfarr[1].Name;
+    document.getElementById('cat1').innerHTML = `Description: ${finalfarr[1].Desc}`;
+    document.getElementById('add1').innerHTML = `Address: ${finalfarr[1].Add}`;
+
+    document.getElementById('nm2').innerHTML = finalfarr[2].Name;
+    document.getElementById('cat2').innerHTML = `Description: ${finalfarr[2].Desc}`;
+    document.getElementById('add2').innerHTML = `Address: ${finalfarr[2].Add}`;
+
+    info_section.style.display = 'block';
+}
+
+//factory function for fourways objects
+function MakeArr(foursqobj) {
+    for (i = 0; i < 3; i++) {
+        //foursqobj.response.groups[0].items[i]
+        let tmpobj = {
+            Name: foursqobj.response.groups[0].items[i].venue.name,
+            Desc: foursqobj.response.groups[0].items[i].venue.categories[0].name,
+            Add: foursqobj.response.groups[0].items[i].venue.location.address
+        }
+        finalfarr.push(tmpobj);
+    }
+}
+
+async function RefineData(wjson, fjson) {
+    finalwobj.Temp = wjson.current.temp;
+    finalwobj.Humid = wjson.current.humidity;
+    finalwobj.Feels = wjson.current.feels_like;
+
+    await MakeArr(fjson);
+
+    console.log(finalwobj);
+    console.log(finalfarr);
+}
+
 btn.onclick = async() => {
     let query = inp.value;
     try {
         if (query == '') {
-            alert('Please input an Area');
+            alert('Please input an Area Name');
             throw new Error('Null input');
         }
         const response = await fetch(`${furl}${query}${clientid}${clientsec}${rad}${lim}&v=20180323`);
@@ -48,9 +94,10 @@ btn.onclick = async() => {
             const jsonresp = await response.json();
             // console.log(jsonresp);
             const weathjson = await helper(jsonresp);
-            foursqobj = jsonresp;
-            weathobj = weathjson;
             ///////////data_refining///////////
+            await RefineData(weathjson, jsonresp);
+            ///////////////clear array///////////////////
+            await EditHtml();
         } else {
             throw new Error('FourSquare response null/Check Network');
         }
