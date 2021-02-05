@@ -1,0 +1,143 @@
+* {
+    font-family: 'PT Sans', sans-serif;
+    background-color: rgb(230, 223, 223);
+}
+
+
+/*Top end*/
+
+nav {
+    padding: 0.4em;
+}
+
+nav i {
+    color: rgb(8, 97, 8);
+    text-rendering: geometricPrecision;
+}
+
+nav i span {
+    color: black;
+    font-style: italic;
+}
+
+header {
+    background-image: url(../resources/pexels-aleksandar-pasaric-325185.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 30em;
+    position: relative;
+    display: flex;
+    margin-bottom: 1em;
+}
+
+@keyframes SelfRise {
+    20% {
+        transform: scale(0.2);
+    }
+    60% {
+        transform: scale(0.6);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+header div {
+    margin: auto;
+    border: 0.25em solid rgba(153, 145, 145, 0.23);
+    text-align: center;
+    padding: 1.3em;
+    background-color: rgba(230, 223, 223, 0.6);
+    animation: SelfRise 1.8s ease-in-out;
+}
+
+header div h1 {
+    font-size: 2.8rem;
+    text-decoration: underline;
+    background-color: rgba(230, 223, 223, 0.6);
+}
+
+header div h2 {
+    font-size: 1.6rem;
+    background-color: inherit;
+}
+
+header div p {
+    font-size: 1.1em;
+    animation: SelfRise 1.8s ease-in-out 0.2s;
+}
+
+
+/*Main Section*/
+
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-area {
+    border: 0.3em rgba(153, 145, 145, 0.6) solid;
+    border-radius: 5em;
+    padding: 1em;
+    margin: 2em;
+}
+
+#search-box {
+    vertical-align: middle;
+    padding: 1.3em;
+}
+
+#inp {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+#search-query {
+    border: none;
+    min-width: 15em;
+    font-size: 1.15rem;
+}
+
+#search-query:focus {
+    text-decoration: underline;
+    border: none;
+}
+
+td i {
+    transition: transform ease-in-out 200ms;
+    margin: 0.1em;
+}
+
+td i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+/*info section*/
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2em;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.card {
+    border: 0.3em rgba(153, 145, 145, 0.6) solid;
+    border-radius: 3em;
+    min-width: 12em;
+    min-height: 15em;
+    margin: 0.5em;
+}
+
+
+/*
+#info {
+    display: none;
+}*/
